@@ -15,9 +15,6 @@ class Department {
             name: name,
         };
     }
-    describe() {
-        console.log(`Department (${this.id}): ${this.name}`);
-    }
     addEmployee(employee) {
         this.employees.push(employee);
     }
@@ -33,6 +30,9 @@ class ITDepartment extends Department {
     constructor(id, admins) {
         super(id, "IT");
         this.admins = admins;
+    }
+    describe() {
+        console.log("IT Department - ID: ", this.id);
     }
 }
 class AccountingDepartment extends Department {
@@ -52,6 +52,9 @@ class AccountingDepartment extends Department {
             throw new Error("Please pass in a valid value!");
         }
         this.addReport(value);
+    }
+    describe() {
+        console.log("Accounting Department - ID: " + this.id);
     }
     addEmployee(name) {
         if (name === "Max") {
@@ -86,3 +89,4 @@ accounting.printReports();
 accounting.printEmployeeInfomation();
 // accountingCopy.describe();
 // // Department undefined
+accounting.describe();
