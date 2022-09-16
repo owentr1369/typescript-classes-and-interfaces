@@ -22,13 +22,13 @@ abstract class Department {
     this.employees.push(employee);
   }
   printEmployeeInfomation() {
-    console.log(this.employees.length);
-    console.log(this.employees);
+    // console.log(this.employees.length);
+    // console.log(this.employees);
   }
 }
 
 const employee1 = Department.createEmployee("Max");
-console.log(employee1, Department.fiscalYear);
+// console.log(employee1, Department.fiscalYear);
 
 class ITDepartment extends Department {
   public admins: string[];
@@ -38,12 +38,13 @@ class ITDepartment extends Department {
     this.admins = admins;
   }
   describe() {
-    console.log("IT Department - ID: ", this.id);
+    // console.log("IT Department - ID: ", this.id);
   }
 }
 
 class AccountingDepartment extends Department {
   private lastReport: string;
+  private static instance: AccountingDepartment;
 
   get mostRecentReport() {
     if (this.lastReport) {
@@ -63,8 +64,16 @@ class AccountingDepartment extends Department {
     this.lastReport = reports[0];
   }
 
+  static getInstance() {
+    if (AccountingDepartment.instance) {
+      return this.instance;
+    }
+    this.instance = new AccountingDepartment("d2", []);
+    return this.instance;
+  }
+
   describe() {
-    console.log("Accounting Department - ID: " + this.id);
+    // console.log("Accounting Department - ID: " + this.id);
   }
 
   addEmployee(name: string) {
@@ -78,7 +87,7 @@ class AccountingDepartment extends Department {
     this.lastReport = text;
   }
   printReports() {
-    console.log(this.reports);
+    // console.log(this.reports);
   }
 }
 
@@ -94,20 +103,21 @@ itAccouting.describe();
 itAccouting.printEmployeeInfomation();
 // const accountingCopy = { name: "Dummy", describe: accounting.describe };
 
-console.log(itAccouting);
+// console.log(itAccouting);
 
-const accounting = new AccountingDepartment("2", []);
+const accounting = AccountingDepartment.getInstance();
+const accounting2 = AccountingDepartment.getInstance();
 
 accounting.mostRecentReport = "Year end report";
 
 accounting.addReport("Something went wrong...!");
-console.log(accounting.mostRecentReport);
+console.log(accounting, accounting2);
 
 accounting.addEmployee("Max");
 accounting.addEmployee("Owen");
 
 accounting.printReports();
-accounting.printEmployeeInfomation();
+// accounting.printEmployeeInfomation();
 // accountingCopy.describe();
 // // Department undefined
 
