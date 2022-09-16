@@ -20,13 +20,35 @@ class Department {
         console.log(this.employees);
     }
 }
-const accounting = new Department("1", "Accounting");
-accounting.addEmployee("Max");
-accounting.addEmployee("Keanu");
+class ITDepartment extends Department {
+    constructor(id, admins) {
+        super(id, "IT");
+        this.admins = admins;
+    }
+}
+class AccountingDepartment extends Department {
+    constructor(id, reports) {
+        super(id, "Accounting");
+        this.reports = reports;
+    }
+    addReport(text) {
+        this.reports.push(text);
+    }
+    printReports() {
+        console.log(this.reports);
+    }
+}
+const itAccouting = new ITDepartment("1", ["Max"]);
+itAccouting.addEmployee("Max");
+itAccouting.addEmployee("Keanu");
 // accounting.name = "New Department";
-accounting.describe();
+itAccouting.describe();
 // Department Accounting
-accounting.printEmployeeInfomation();
+itAccouting.printEmployeeInfomation();
 // const accountingCopy = { name: "Dummy", describe: accounting.describe };
+console.log(itAccouting);
+const accounting = new AccountingDepartment("2", []);
+accounting.addReport("Something went wrong...!");
+accounting.printReports();
 // accountingCopy.describe();
 // // Department undefined
