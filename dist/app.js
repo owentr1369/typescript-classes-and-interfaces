@@ -31,6 +31,12 @@ class AccountingDepartment extends Department {
         super(id, "Accounting");
         this.reports = reports;
     }
+    addEmployee(name) {
+        if (name === "Max") {
+            return;
+        }
+        this.employees.push(name);
+    }
     addReport(text) {
         this.reports.push(text);
     }
@@ -49,6 +55,9 @@ itAccouting.printEmployeeInfomation();
 console.log(itAccouting);
 const accounting = new AccountingDepartment("2", []);
 accounting.addReport("Something went wrong...!");
+accounting.addEmployee("Max");
+accounting.addEmployee("Owen");
 accounting.printReports();
+accounting.printEmployeeInfomation();
 // accountingCopy.describe();
 // // Department undefined
