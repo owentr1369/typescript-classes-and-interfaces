@@ -4,18 +4,24 @@ let add;
 add = (n1, n2) => {
     return n1 + n2;
 };
-console.log(add(2, 3));
 class Person {
-    constructor(n) {
+    constructor(n = "") {
         this.age = 30;
-        this.name = n;
+        if (n) {
+            this.name = n;
+        }
     }
     greet(phrase) {
-        console.log(phrase + " " + this.name);
+        if (this.name) {
+            console.log(phrase + " " + this.name);
+        }
+        else {
+            console.log("Hi!");
+        }
     }
 }
 let user1;
-user1 = new Person("Max");
+user1 = new Person();
 // user1.name = 'Min'
 user1.greet("Hi there - I am");
 console.log(user1);
