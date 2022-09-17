@@ -1,11 +1,14 @@
-interface Greetable {
-  name: string;
+interface Named {
+  readonly name: string;
+}
 
+interface Greetable {
   greet(phrase: string): void;
 }
 
-class Person implements Greetable {
+class Person implements Greetable, Named {
   name: string;
+  age = 30;
 
   constructor(n: string) {
     this.name = n;
@@ -19,6 +22,8 @@ let user1: Greetable;
 
 user1 = new Person("Max");
 
+// user1.name = 'Min'
+
 user1.greet("Hi there - I am");
 
-console.warn(user1);
+console.log(user1);

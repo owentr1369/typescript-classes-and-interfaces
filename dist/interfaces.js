@@ -1,6 +1,7 @@
 "use strict";
 class Person {
     constructor(n) {
+        this.age = 30;
         this.name = n;
     }
     greet(phrase) {
@@ -9,5 +10,6 @@ class Person {
 }
 let user1;
 user1 = new Person("Max");
+// user1.name = 'Min'
 user1.greet("Hi there - I am");
-console.warn(user1);
+console.log(user1);
