@@ -1,4 +1,10 @@
 "use strict";
+// type AddFn = (a: number, b: number) => number;
+let add;
+add = (n1, n2) => {
+    return n1 + n2;
+};
+console.log(add(2, 3));
 class Person {
     constructor(n) {
         this.age = 30;
